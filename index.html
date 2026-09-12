@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Denises Wunschliste</title>
+<meta name="description" content="Denises Wunschliste – wer etwas schenkt, hakt es hier ab, damit niemand doppelt kauft.">
+<meta name="theme-color" content="#14301f">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛳</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap">
+<link rel="stylesheet" href="css/style.css?v=28">
+</head>
+<body id="top">
+
+<section class="hero">
+  <!-- Wenn assets/hero.jpg vorhanden ist, liegt das Foto hier oben auf.
+       Fehlt die Datei, bleibt diese Ebene leer und die gezeichnete
+       Szene darunter ist das Kopfbild. -->
+  <div class="hero-photo" aria-hidden="true"></div>
+
+  <div class="hero-scene" aria-hidden="true">
+    <svg viewBox="0 0 1440 620" preserveAspectRatio="xMidYMax slice" role="presentation" focusable="false">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0"    stop-color="#8fb8c9"/>
+          <stop offset=".3"   stop-color="#c4d5d0"/>
+          <stop offset=".62"  stop-color="#efdfbd"/>
+          <stop offset=".86"  stop-color="#f4e3ba"/>
+          <stop offset="1"    stop-color="#e9d6a8"/>
+        </linearGradient>
+        <radialGradient id="sun" cx=".66" cy=".49" r=".42">
+          <stop offset="0"   stop-color="#fff6dd" stop-opacity=".95"/>
+          <stop offset=".28" stop-color="#ffeec0" stop-opacity=".55"/>
+          <stop offset="1"   stop-color="#ffeec0" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="hillFar" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#7d9a80"/><stop offset="1" stop-color="#9db38c"/>
+        </linearGradient>
+        <linearGradient id="hillMid" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#4d7551"/><stop offset="1" stop-color="#5f8a58"/>
+        </linearGradient>
+        <linearGradient id="mist" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0"   stop-color="#fdf6e4" stop-opacity="0"/>
+          <stop offset=".45" stop-color="#fdf6e4" stop-opacity=".5"/>
+          <stop offset="1"   stop-color="#fdf6e4" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0"   stop-color="#14301f" stop-opacity="0"/>
+          <stop offset=".55" stop-color="#14301f" stop-opacity=".14"/>
+          <stop offset="1"   stop-color="#14301f" stop-opacity=".42"/>
+        </linearGradient>
+        <radialGradient id="spot" cx=".78" cy=".62" r=".5">
+          <stop offset="0" stop-color="#ffeec0" stop-opacity=".26"/>
+          <stop offset="1" stop-color="#ffeec0" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="vignette" cx=".5" cy=".4" r=".82">
+          <stop offset=".45" stop-color="#000" stop-opacity="0"/>
+          <stop offset="1"   stop-color="#1b3a24" stop-opacity=".2"/>
+        </radialGradient>
+        <radialGradient id="sandG" cx=".42" cy=".3" r=".8">
+          <stop offset="0" stop-color="#f3e9cd"/><stop offset="1" stop-color="#c9b485"/>
+        </radialGradient>
+        <filter id="soft"><feGaussianBlur stdDeviation="3"/></filter>
+        <filter id="softer"><feGaussianBlur stdDeviation="7"/></filter>
+        <filter id="mistBlur"><feGaussianBlur stdDeviation="9"/></filter>
+      </defs>
+
+      <rect width="1440" height="620" fill="url(#sky)"/>
+      <rect width="1440" height="620" fill="url(#sun)"/>
+
+      <!-- Luftperspektive: hinten heller, weicher, flacher -->
+      <g filter="url(#softer)" opacity=".5">
+        <path d="M0 232 C 160 178, 316 208, 470 194 C 628 180, 748 212, 908 192
+                 C 1064 172, 1268 210, 1440 186 L1440 302 L0 302 Z" fill="url(#hillFar)"/>
+      </g>
+      <g filter="url(#soft)" opacity=".72">
+        <path d="M0 258 C 196 216, 352 250, 534 238 C 716 226, 866 258, 1052 240
+                 C 1222 224, 1342 252, 1440 242 L1440 306 L0 306 Z" fill="url(#hillMid)"/>
+      </g>
+
+      <!-- Baumreihe, unscharf wie eine echte Ferne -->
+      <g opacity=".9" filter="url(#soft)">
+        <path d="M0 282 q10-14 20-4 q9-16 19-3 q11-18 21-2 q8-13 18-3 q12-19 22-3
+                 q9-15 19-2 q11-17 21-3 q8-12 18-2 q12-18 22-3 q10-16 20-2 q11-17 21-3
+                 q9-13 19-2 q12-19 22-3 q10-15 20-2 q11-18 21-3 q8-12 18-2 q12-17 22-3
+                 q10-16 20-2 q11-18 21-2 q9-13 19-3 q12-18 22-2 q10-15 20-3 q11-17 21-2
+                 q8-13 18-3 q12-18 22-2 q10-16 20-3 q11-17 21-2 q9-12 19-3 q12-19 22-2
+                 q10-15 20-3 q11-17 21-2 q8-13 18-2 q12-18 22-3 q10-16 20-2 q11-17 21-3
+                 q9-12 19-2 q12-18 22-3 q10-15 20-2 q11-18 21-3 q8-12 18-2 q12-17 22-3
+                 q10-16 20-2 q11-18 21-2 q9-13 19-3 q12-18 22-2 q10-15 20-3 q11-17 21-2
+                 q8-13 18-3 q12-18 22-2 q10-16 20-3 q11-17 21-2 q9-12 19-3 q12-19 22-2
+                 q10-15 20-3 q11-17 21-2 q8-13 18-2 q12-18 22-3 q10-16 20-2 q11-17 21-3
+                 L1440 310 L0 310 Z" fill="#2d5138"/>
+      </g>
+
+      <!-- Meer und Strandlinie links, wie an einem Links-Platz -->
+      <g>
+        <rect x="-20" y="262" width="700" height="52" fill="#8fadbc"/>
+        <path d="M-20 306 q120 10 250 4 q150-7 300 6 q90 8 150 4 v10 H-20 z" fill="#e8dcc0" opacity=".85"/>
+        <path d="M-20 300 h700" stroke="#fdf6e4" stroke-width="2" opacity=".45"/>
+      </g>
+
+      <!-- Clubhaus aus Naturstein, rechts auf der Anhöhe -->
+      <g opacity=".95">
+        <path d="M1188 296v-52l22-18 22 18v52z" fill="#8d8272"/>
+        <path d="M1232 296v-40l26-20 26 20v40z" fill="#7d7365"/>
+        <path d="M1284 296v-30l20-15 20 15v30z" fill="#8d8272"/>
+        <path d="M1186 246l24-20 24 20z" fill="#4e463c"/>
+        <path d="M1230 258l28-22 28 22z" fill="#453e35"/>
+        <path d="M1282 267l22-17 22 17z" fill="#4e463c"/>
+        <g fill="#f6e6b8" opacity=".9">
+          <rect x="1200" y="258" width="7" height="10"/><rect x="1214" y="258" width="7" height="10"/>
+          <rect x="1200" y="276" width="7" height="10"/><rect x="1214" y="276" width="7" height="10"/>
+          <rect x="1248" y="270" width="8" height="11"/><rect x="1264" y="270" width="8" height="11"/>
+          <rect x="1296" y="278" width="7" height="9"/><rect x="1310" y="278" width="7" height="9"/>
+        </g>
+        <path d="M1160 296 q60-8 120-4 q80 6 160 2 v14 H1160 z" fill="#3f6b47" opacity=".9"/>
+      </g>
+
+      <!-- Fairway -->
+      <g>
+        <polygon points="760,300 -1400,620 -1170,620" fill="#4e8f56"/>
+        <polygon points="760,300 -1170,620 -940,620" fill="#43804d"/>
+        <polygon points="760,300 -940,620 -710,620" fill="#4e8f56"/>
+        <polygon points="760,300 -710,620 -480,620" fill="#43804d"/>
+        <polygon points="760,300 -480,620 -250,620" fill="#4e8f56"/>
+        <polygon points="760,300 -250,620 -20,620" fill="#43804d"/>
+        <polygon points="760,300 -20,620 210,620" fill="#4e8f56"/>
+        <polygon points="760,300 210,620 440,620" fill="#43804d"/>
+        <polygon points="760,300 440,620 670,620" fill="#4e8f56"/>
+        <polygon points="760,300 670,620 900,620" fill="#43804d"/>
+        <polygon points="760,300 900,620 1130,620" fill="#4e8f56"/>
+        <polygon points="760,300 1130,620 1360,620" fill="#43804d"/>
+        <polygon points="760,300 1360,620 1590,620" fill="#4e8f56"/>
+        <polygon points="760,300 1590,620 1820,620" fill="#43804d"/>
+        <polygon points="760,300 1820,620 2050,620" fill="#4e8f56"/>
+        <polygon points="760,300 2050,620 2280,620" fill="#43804d"/>
+        <polygon points="760,300 2280,620 2510,620" fill="#4e8f56"/>
+        <polygon points="760,300 2510,620 2740,620" fill="#43804d"/>
+        <polygon points="760,300 2740,620 2850,620" fill="#4e8f56"/>
+      </g>
+
+      <linearGradient id="flat" x1="0" y1="0" x2="0" y2="1" gradientUnits="userSpaceOnUse"
+                      y1="300" y2="470">
+        <stop offset="0"   stop-color="#4a8a53" stop-opacity=".92"/>
+        <stop offset=".55" stop-color="#4a8a53" stop-opacity=".42"/>
+        <stop offset="1"   stop-color="#4a8a53" stop-opacity="0"/>
+      </linearGradient>
+      <rect x="0" y="300" width="1440" height="170" fill="url(#flat)"/>
+
+      <!-- Bodennebel über der Ferne: verdeckt den Fluchtpunkt und trennt
+           Platz von Horizont, wie an einem feuchten Abend. -->
+      <rect x="-40" y="266" width="1520" height="86" fill="url(#mist)" filter="url(#mistBlur)"/>
+
+      <!-- Bunker: Schattenrand, Sandfläche, heller Grat -->
+      <g>
+        <ellipse cx="292" cy="452" rx="146" ry="32" fill="#0f2a19" opacity=".6" filter="url(#soft)"/>
+        <ellipse cx="294" cy="445" rx="132" ry="25" fill="#1a3c26"/>
+        <ellipse cx="296" cy="442" rx="124" ry="21" fill="url(#sandG)" opacity=".78"/>
+        <ellipse cx="298" cy="436" rx="96" ry="12" fill="#efe4c6" opacity=".3"/>
+        <path d="M172 441 a124 21 0 0 1 248 0" fill="none" stroke="#0f2a19"
+              stroke-width="3" opacity=".45" filter="url(#soft)"/>
+      </g>
+
+      <!-- Grün mit Fahne und Loch -->
+      <g class="hero-flag">
+        <ellipse cx="1136" cy="420" rx="196" ry="44" fill="#5aa367" opacity=".5" filter="url(#soft)"/>
+        <ellipse cx="1136" cy="416" rx="160" ry="34" fill="#65b071" opacity=".45"/>
+        <ellipse cx="1136" cy="414" rx="10" ry="4" fill="#08170e"/>
+        <path d="M1136 414V300" stroke="#f7f3e8" stroke-width="3" stroke-linecap="round"/>
+        <path d="M1136 302l38 11-38 11z" fill="#8f2f28" stroke="#5d1c17" stroke-width=".9"/>
+      </g>
+
+      <rect width="1440" height="620" fill="url(#spot)"/>
+      <rect y="330" width="1440" height="290" fill="url(#fade)"/>
+      <rect width="1440" height="620" fill="url(#vignette)"/>
+    </svg>
+
+    <!-- Grasnarbe und Filmkorn: eine 180px-Kachel aus fraktalem Rausch,
+         multipliziert über die Szene. Kostet ein paar hundert Byte. -->
+    <span class="hero-grain"></span>
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Eine besondere Wunschliste</p>
+      <h1>Denises Wünsche</h1>
+      <p class="lede">Wähle einen Wunsch aus und reserviere ihn mit einem kurzen Passwort.
+        Damit kannst du ihn später wieder aufheben. Denise sieht nicht, wer welchen
+        Wunsch auswählt.</p>
+    </div>
+  </div>
+
+  <span class="hero-script" aria-hidden="true">Good things<br>take time</span>
+
+  <div class="tartan-band" aria-hidden="true"></div>
+</section>
+
+<main class="wrap">
+
+  <div class="adminbar" id="adminbar" hidden>
+    <span class="adminbar-label">Admin-Modus</span>
+    <div class="adminbar-actions">
+      <button class="primary small" id="admin-toggle" type="button">Wunsch hinzufügen</button>
+      <button class="ghost small" id="logout" type="button">Abmelden</button>
+    </div>
+  </div>
+
+  <section class="panel" id="admin-panel" hidden>
+    <h2 id="form-heading">Neuer Wunsch</h2>
+    <form id="wish-form" autocomplete="off">
+      <input type="hidden" id="edit-id">
+      <div class="field">
+        <label for="f-title">Artikel <span class="req">*</span></label>
+        <input id="f-title" name="title" type="text" required maxlength="140" placeholder="z. B. Kaschmirschal, beige">
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="f-price">Preis (ca.) <span class="hint">(€ kommt automatisch)</span></label>
+          <input id="f-price" name="price" type="text" maxlength="40" placeholder="49">
+        </div>
+        <div class="field grow">
+          <label for="f-link">Link zum Shop <span class="hint">(Bild wird daraus geholt)</span></label>
+          <input id="f-link" name="link" type="url" maxlength="600" placeholder="https://…">
+        </div>
+      </div>
+
+      <div class="imgstatus" id="image-status" hidden>
+        <img id="image-preview" alt="" hidden>
+        <span id="image-status-text"></span>
+        <button type="button" class="linkish" id="image-manual">Bild selbst angeben</button>
+      </div>
+
+      <div class="field">
+        <label for="f-note">Bemerkung <span class="hint">(z. B. Größe 86, Farbe rosé)</span></label>
+        <input id="f-note" name="note" type="text" maxlength="200" placeholder="Größe 86">
+      </div>
+
+      <div class="field" id="image-row" hidden>
+        <label for="f-image">Bild-URL <span class="hint">(Rechtsklick aufs Produktbild → „Bildadresse kopieren")</span></label>
+        <input id="f-image" name="image_url" type="url" maxlength="600" placeholder="https://…jpg">
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="primary" id="submit-btn">Hinzufügen</button>
+        <button type="button" class="ghost" id="cancel-edit" hidden>Abbrechen</button>
+        <span class="form-msg" id="form-msg" role="status" aria-live="polite"></span>
+      </div>
+    </form>
+  </section>
+
+  <div class="notice" id="notice" role="status" aria-live="polite" hidden></div>
+
+  <section id="list" class="list" aria-label="Wunschliste"></section>
+
+  <p class="empty" id="empty" hidden>Noch keine Wünsche eingetragen.</p>
+
+  <section class="summary reveal" id="stats" hidden aria-label="Übersicht">
+    <div class="stat">
+      <span class="stat-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" focusable="false">
+          <path d="M3 10h18v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M2.5 6.5h19v3.5h-19z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M12 6.5v14.5M12 6.5C10.5 3 8.5 2.5 7.5 3.4S7 6 9 6.5zM12 6.5c1.5-3.5 3.5-4 4.5-3.1S17 6 15 6.5z"
+                fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span class="stat-num" id="stat-total">0</span><span class="stat-label">Gesamt Wünsche</span>
+    </div>
+    <div class="stat">
+      <span class="stat-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" focusable="false">
+          <circle cx="12" cy="12" r="8.6" fill="none" stroke="currentColor" stroke-width="1.7"/>
+        </svg>
+      </span>
+      <span class="stat-num" id="stat-open">0</span><span class="stat-label">Offene Wünsche</span>
+    </div>
+    <div class="stat">
+      <span class="stat-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" focusable="false">
+          <circle cx="12" cy="12" r="9" fill="currentColor"/>
+          <path d="M7.8 12.3l2.8 2.8 5.6-5.9" fill="none" stroke="#fffdf8" stroke-width="1.9"
+                stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span class="stat-num" id="stat-taken">0</span><span class="stat-label">Vergebene Wünsche</span>
+    </div>
+  </section>
+
+  <div class="toolbar reveal" id="toolbar" hidden>
+    <label class="switch">
+      <input type="checkbox" id="hide-taken">
+      <span>Vergebene ausblenden</span>
+    </label>
+  </div>
+
+</main>
+
+<footer>
+  <div class="login" id="login">
+    <button type="button" class="linkish" id="login-open">Verwalten</button>
+    <form id="login-form" hidden autocomplete="off">
+      <label class="sr-only" for="login-pw">Passwort</label>
+      <input id="login-pw" type="password" placeholder="Passwort" autocomplete="current-password">
+      <button type="submit" class="primary small">Anmelden</button>
+      <button type="button" class="linkish" id="login-cancel">Abbrechen</button>
+      <p class="login-msg" id="login-msg" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</footer>
+
+<div class="tartan-band" aria-hidden="true"></div>
+
+<script src="js/config.js?v=28"></script>
+<script src="js/app.js?v=28"></script>
+</body>
+</html>

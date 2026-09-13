@@ -1,6 +1,8 @@
 /* ============================================================
    Denises Wunschliste
-   Visuelles Thema: moderner schottischer Golfclub.
+   Visuelles Thema: warmes Flatlay – Puder, Leinen, Creme, Gold.
+   Die Palette ist aus dem Kopfbild gezogen (Rosé #c3a795,
+   Taupe #a58a76, Ton #8c6952, Espresso #4a3a2f).
    Nur Gestaltung – alle Klassen- und ID-Namen, die js/app.js
    verwendet, bleiben unverändert erhalten.
    ============================================================ */
@@ -8,41 +10,55 @@
 /* ---------- 1. Farben, Maße, Schrift ------------------------ */
 
 :root {
-  /* Grün */
-  --fairway:      #1f5c3a;   /* tiefes Golfgrün, Primärfarbe    */
-  --fairway-dark: #184a2e;
-  --fairway-soft: #2f7a4f;
-  --pine:         #14301f;   /* dunkles Tannengrün, Navigation  */
-  --pine-deep:    #0e2416;
+  /* Warme Neutrale – die Grundfläche der Seite */
+  --porcelain:   #faf5f0;   /* Seitenhintergrund               */
+  --paper:       #fffcf9;   /* Karten                          */
+  --linen:       #f3e9e0;   /* zweite Fläche, ruhige Blöcke    */
+  --shell:       #e9dcd1;   /* Ränder                          */
+  --shell-deep:  #d9c6b7;   /* Ränder betont, Schalterspur     */
 
-  /* Neutrale Flächen */
-  --cream:        #f7f2e7;   /* Seitenhintergrund               */
-  --paper:        #fffdf8;   /* Karten                          */
-  --sand:         #e9dfc7;
-  --sand-deep:    #d8caa9;
-  --sand-line:    #ded2b6;
+  /* Puder – die Leitfarbe, direkt aus dem Foto */
+  --rose:        #a76a63;   /* Primärfarbe, Buttons            */
+  --rose-dark:   #8e554f;
+  --rose-mid:    #c08d86;
+  --rose-soft:   #e6c6bf;
+  --rose-veil:   #f7ebe7;
 
-  /* Akzente */
-  --claret:       #8f2f28;   /* Rostrot / Bordeaux              */
-  --claret-soft:  #b8534a;
-  --thistle:      #34617f;   /* gedämpftes Schottisch-Blau      */
+  /* Gold und Ton – Akzente, Linien, Status „offen"            */
+  --gold:        #b9954f;
+  --gold-soft:   #e0cda4;
+  --gold-veil:   #f7f0e2;
+  --clay:        #8c6952;
+
+  /* Dunkel – Admin-Leiste, Kontrast wie Hantel und Matte      */
+  --espresso:    #3c322b;
+  --espresso-lo: #2b231e;
 
   /* Text */
-  --ink:          #23282a;   /* Anthrazit                       */
-  --ink-soft:     #5a6158;
-  --ink-faint:    #6b7364;
-  --on-dark:      #f4efe2;
-  --on-dark-soft: #cfd8c8;
+  --ink:         #3a302a;
+  --ink-soft:    #6d5c50;
+  --ink-faint:   #8d7b6e;
+  --on-dark:     #f6efe8;
+  --on-dark-soft:#d5c4b6;
 
   /* Form */
-  --r-sm: 8px;
-  --r-md: 14px;
-  --r-lg: 20px;
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 22px;
   --r-pill: 999px;
 
-  --shadow-sm: 0 1px 2px rgba(20, 48, 31, .06), 0 2px 6px rgba(20, 48, 31, .05);
-  --shadow-md: 0 2px 4px rgba(20, 48, 31, .06), 0 10px 24px -10px rgba(20, 48, 31, .22);
-  --shadow-lg: 0 6px 14px rgba(20, 48, 31, .10), 0 26px 50px -24px rgba(20, 48, 31, .34);
+  /* Schatten in Warmbraun statt Schwarz: wirkt wie Licht auf Papier */
+  --shadow-sm:
+    0 1px 1px rgba(74, 58, 47, .04),
+    0 2px 6px rgba(74, 58, 47, .05);
+  --shadow-md:
+    0 1px 2px rgba(74, 58, 47, .05),
+    0 4px 10px -4px rgba(74, 58, 47, .10),
+    0 14px 30px -16px rgba(74, 58, 47, .24);
+  --shadow-lg:
+    0 2px 4px rgba(74, 58, 47, .06),
+    0 10px 24px -12px rgba(74, 58, 47, .18),
+    0 32px 60px -30px rgba(74, 58, 47, .34);
 
   --wrap: 1140px;
   --gutter: clamp(16px, 4vw, 40px);
@@ -50,7 +66,7 @@
   --font-display: "Playfair Display", "Cormorant Garamond", Georgia, "Times New Roman", serif;
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 
-  --ring: 0 0 0 3px rgba(31, 92, 58, .18), 0 0 0 1.5px var(--fairway);
+  --ring: 0 0 0 3px rgba(167, 106, 99, .20), 0 0 0 1.5px var(--rose);
 }
 
 /* ---------- 2. Grundlagen ----------------------------------- */
@@ -59,39 +75,40 @@
 
 [hidden] { display: none !important; }
 
-html {
-  -webkit-text-size-adjust: 100%;
-}
+html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
-  background-color: var(--cream);
-  /* sehr feine Papierstruktur, kostet kein Bild */
+  background-color: var(--porcelain);
+  /* Zwei sehr weiche Lichtflecken – dieselbe diffuse Beleuchtung
+     wie im Kopfbild, kostet kein einziges Byte Bilddaten. */
   background-image:
-    radial-gradient(circle at 18% 12%, rgba(31, 92, 58, .045), transparent 42%),
-    radial-gradient(circle at 86% 68%, rgba(52, 97, 127, .04), transparent 46%);
+    radial-gradient(1200px 620px at 12% -6%,  rgba(255, 249, 243, .95), transparent 62%),
+    radial-gradient(900px 520px at 92% 8%,   rgba(230, 198, 191, .30), transparent 60%),
+    radial-gradient(1000px 700px at 50% 106%, rgba(224, 205, 164, .22), transparent 62%);
   background-attachment: fixed;
   color: var(--ink);
   font-family: var(--font-body);
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.62;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3 {
   font-family: var(--font-display);
   font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -.01em;
+  line-height: 1.14;
+  letter-spacing: -.012em;
   margin: 0;
 }
 
-a { color: var(--thistle); }
+a { color: var(--clay); }
 
 img { max-width: 100%; }
 
 :focus-visible {
-  outline: 2px solid var(--fairway);
+  outline: 2px solid var(--rose);
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -114,52 +131,35 @@ img { max-width: 100%; }
   padding-inline: var(--gutter);
 }
 
-/* ---------- 3. Crawford-Tartan ------------------------------ */
-/* Nachgewebt nach dem Thread Count des Crawford-Setts
-   (Vestiarium Scoticum 1842):  DC/12 W4 DC60 G24 DC6 G24 DC/6
-   – an den Pivots gespiegelt ergibt das einen Rapport von 254 Fäden.
-   Kette (warp) deckend, Schuss (weft) halbtransparent darüber:
-   an den Kreuzungen mischen sich die Farben wie im echten Gewebe.
-   1 Faden = 0,30px, Rapport 76.2px.                            */
+/* ---------- 3. Satinband ------------------------------------ */
+/* Ein Band statt eines Musters: senkrechter Verlauf für den Glanz,
+   darüber ein sehr feiner Kettfaden-Raster und zwei Goldkanten.
+   Ruhig genug, dass es die Seite nur einfasst statt sie zu teilen. */
 
 .tartan,
 .tartan-band {
-  background-color: #7e2130;
+  background-color: #e2beb6;
   background-image:
-    repeating-linear-gradient(0deg,
-      rgba(126, 33, 48, .55) 0.00px, rgba(126, 33, 48, .55) 3.60px,
-      rgba(236, 227, 209, .62) 3.60px, rgba(236, 227, 209, .62) 4.80px,
-      rgba(126, 33, 48, .55) 4.80px, rgba(126, 33, 48, .55) 22.80px,
-      rgba(29, 71, 50, .66) 22.80px, rgba(29, 71, 50, .66) 30.00px,
-      rgba(126, 33, 48, .55) 30.00px, rgba(126, 33, 48, .55) 31.80px,
-      rgba(29, 71, 50, .66) 31.80px, rgba(29, 71, 50, .66) 39.00px,
-      rgba(126, 33, 48, .55) 39.00px, rgba(126, 33, 48, .55) 40.80px,
-      rgba(29, 71, 50, .66) 40.80px, rgba(29, 71, 50, .66) 48.00px,
-      rgba(126, 33, 48, .55) 48.00px, rgba(126, 33, 48, .55) 49.80px,
-      rgba(29, 71, 50, .66) 49.80px, rgba(29, 71, 50, .66) 57.00px,
-      rgba(126, 33, 48, .55) 57.00px, rgba(126, 33, 48, .55) 75.00px,
-      rgba(236, 227, 209, .62) 75.00px, rgba(236, 227, 209, .62) 76.20px),
+    /* Kettfäden: 1px hell, 2px Lücke – aus zwei Metern Abstand nur Textur */
     repeating-linear-gradient(90deg,
-      #7e2130 0.00px, #7e2130 3.60px,
-      #ece3d1 3.60px, #ece3d1 4.80px,
-      #7e2130 4.80px, #7e2130 22.80px,
-      #1d4732 22.80px, #1d4732 30.00px,
-      #7e2130 30.00px, #7e2130 31.80px,
-      #1d4732 31.80px, #1d4732 39.00px,
-      #7e2130 39.00px, #7e2130 40.80px,
-      #1d4732 40.80px, #1d4732 48.00px,
-      #7e2130 48.00px, #7e2130 49.80px,
-      #1d4732 49.80px, #1d4732 57.00px,
-      #7e2130 57.00px, #7e2130 75.00px,
-      #ece3d1 75.00px, #ece3d1 76.20px);
+      rgba(255, 252, 249, .22) 0px, rgba(255, 252, 249, .22) 1px,
+      rgba(140, 105,  82, .07) 1px, rgba(140, 105,  82, .07) 3px),
+    /* Satinglanz: oben Licht, in der Mitte die Kante, unten Schatten */
+    linear-gradient(180deg,
+      #f0dad3  0%,
+      #e7c8c0 26%,
+      #d9aca3 52%,
+      #e3bdb4 74%,
+      #cf9f96 100%);
 }
 
-/* Karo-Band unter dem Kopfbereich: hoch genug, dass die Kreuzungen
-   des Setts wirklich zu sehen sind. */
 .tartan-band {
-  height: 32px;
-  box-shadow: inset 0 2px 0 rgba(9, 30, 18, .45),
-              inset 0 -2px 0 rgba(9, 30, 18, .3);
+  height: 20px;
+  box-shadow:
+    inset 0  1.4px 0 rgba(224, 205, 164, .85),   /* Goldkante oben  */
+    inset 0 -1.4px 0 rgba(185, 149,  79, .55),   /* Goldkante unten */
+    inset 0  3px 6px rgba(255, 252, 249, .30),
+    inset 0 -3px 7px rgba(120,  84,  70, .18);
 }
 
 /* ---------- 5. Kopfbild ------------------------------------- */
@@ -168,11 +168,11 @@ img { max-width: 100%; }
   position: relative;
   z-index: 1;
   isolation: isolate;
-  min-height: clamp(340px, 42vw, 480px);
+  min-height: clamp(360px, 44vw, 520px);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: #dfd3b4;
+  background: #e6d8cc;
   overflow: hidden;
 }
 
@@ -186,7 +186,10 @@ img { max-width: 100%; }
   background-image: image-set(url("../assets/hero.webp") type("image/webp"),
                               url("../assets/hero.jpg")  type("image/jpeg"));
   background-size: cover;
-  background-position: center 50%;
+  background-position: 58% 52%;
+  /* eine Spur wärmer und weicher, damit die Schrift ruhig steht */
+  filter: saturate(1.04) contrast(.99);
+  transform: scale(1.02);
 }
 
 .hero-scene {
@@ -199,6 +202,7 @@ img { max-width: 100%; }
 
 .hero-scene svg { display: block; width: 100%; height: 100%; }
 
+/* Feines Korn über allem: nimmt dem Verlauf das Digitale */
 .hero-grain {
   position: absolute;
   inset: 0;
@@ -206,21 +210,35 @@ img { max-width: 100%; }
   background: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='180'%20height='180'%3E%3Cfilter%20id='n'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.85'%20numOctaves='4'%20stitchTiles='stitch'%20seed='9'/%3E%3CfeColorMatrix%20type='saturate'%20values='0'/%3E%3C/filter%3E%3Crect%20width='180'%20height='180'%20filter='url(%23n)'%20opacity='.55'/%3E%3C/svg%3E") repeat;
   background-size: 180px 180px;
   mix-blend-mode: overlay;
-  opacity: .22;
+  opacity: .18;
 }
 
-/* Heller Schleier links: darauf steht die dunkle Schrift ruhig und lesbar */
+/* Heller Schleier links: darauf steht die dunkle Schrift ruhig und
+   lesbar, rechts bleibt das Foto offen. */
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 2;
-  background: linear-gradient(100deg,
-    rgba(250, 246, 236, .86) 0%,
-    rgba(250, 246, 236, .72) 24%,
-    rgba(250, 246, 236, .42) 41%,
-    rgba(250, 246, 236, .1) 58%,
-    rgba(250, 246, 236, 0) 72%);
+  background:
+    linear-gradient(102deg,
+      rgba(252, 246, 241, .93)  0%,
+      rgba(252, 246, 241, .86) 22%,
+      rgba(251, 243, 238, .56) 40%,
+      rgba(250, 241, 236, .18) 57%,
+      rgba(250, 241, 236, 0)   72%),
+    radial-gradient(80% 120% at 8% 40%, rgba(255, 252, 249, .5), transparent 70%);
+  pointer-events: none;
+}
+
+/* Unterkante weich in die Seite laufen lassen */
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 46%;
+  z-index: 2;
+  background: linear-gradient(180deg, rgba(250, 245, 240, 0), rgba(250, 245, 240, .58));
   pointer-events: none;
 }
 
@@ -230,71 +248,88 @@ img { max-width: 100%; }
   width: 100%;
   max-width: var(--wrap);
   margin: 0 auto;
-  padding: clamp(34px, 5vw, 58px) var(--gutter);
+  padding: clamp(34px, 5vw, 62px) var(--gutter);
 }
 
 .hero-text { max-width: 34rem; }
 
 .hero-eyebrow {
-  margin: 0 0 10px;
-  font-size: .76rem;
+  position: relative;
+  display: inline-block;
+  margin: 0 0 14px;
+  padding-left: 42px;
+  font-size: .74rem;
   font-weight: 600;
-  letter-spacing: .22em;
+  letter-spacing: .26em;
   text-transform: uppercase;
-  color: var(--fairway-dark);
-  text-shadow: 0 1px 2px rgba(253, 250, 241, .8);
+  color: var(--clay);
+}
+
+/* Goldstrich vor der Zeile – das kleine Detail, das teuer aussieht */
+.hero-eyebrow::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .62em;
+  width: 30px;
+  height: 1.5px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--gold), rgba(185, 149, 79, 0));
 }
 
 .hero h1 {
-  font-size: clamp(2.4rem, 6vw, 3.9rem);
-  letter-spacing: -.025em;
-  color: var(--pine);
+  font-size: clamp(2.5rem, 6.2vw, 4.1rem);
+  letter-spacing: -.028em;
+  color: #33291f;
   text-wrap: balance;
-  text-shadow: 0 1px 3px rgba(253, 250, 241, .85);
+  text-shadow: 0 1px 2px rgba(255, 251, 246, .9);
 }
 
 .lede {
-  margin: 16px 0 0;
+  margin: 18px 0 0;
   max-width: 30rem;
   font-size: clamp(.98rem, 1.4vw, 1.08rem);
-  line-height: 1.62;
-  color: #2f3a33;
-  text-shadow: 0 1px 2px rgba(253, 250, 241, .8);
+  line-height: 1.66;
+  color: #4a3d34;
+  text-shadow: 0 1px 2px rgba(255, 251, 246, .85);
 }
 
 /* Handschriftlicher Gruß rechts unten im Bild */
 .hero-script {
   position: absolute;
   z-index: 3;
-  right: clamp(20px, 5vw, 64px);
-  bottom: clamp(50px, 7vw, 80px);
+  right: clamp(20px, 5vw, 66px);
+  bottom: clamp(52px, 7vw, 82px);
   font-family: "Caveat", "Segoe Script", cursive;
-  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  font-size: clamp(1.55rem, 2.7vw, 2.2rem);
   font-weight: 600;
   line-height: 1.05;
   text-align: center;
-  color: #fffdf4;
-  text-shadow: 0 2px 12px rgba(13, 34, 21, .9), 0 0 4px rgba(13, 34, 21, .55);
+  color: #4a382c;
+  text-shadow:
+    0 1px 0   rgba(255, 251, 246, .95),
+    0 2px 10px rgba(255, 249, 242, .95),
+    0 0  26px rgba(255, 249, 242, .85);
 }
 
 .hero-script::before {
   content: "";
   position: absolute;
-  inset: -26px -34px;
+  inset: -28px -38px;
   z-index: -1;
   border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(11, 30, 19, .5), rgba(11, 30, 19, 0) 100%);
+  background: radial-gradient(closest-side, rgba(255, 250, 244, .82), rgba(255, 250, 244, 0) 100%);
 }
 
 .hero-script::after {
   content: "";
   display: block;
-  width: 62%;
-  height: 2px;
-  margin: 6px auto 0;
+  width: 58%;
+  height: 1.6px;
+  margin: 8px auto 0;
   border-radius: 2px;
-  background: currentColor;
-  opacity: .7;
+  background: linear-gradient(90deg, rgba(185, 149, 79, 0), var(--gold), rgba(185, 149, 79, 0));
+  opacity: .95;
 }
 
 .hero .tartan-band {
@@ -308,8 +343,7 @@ img { max-width: 100%; }
 main {
   position: relative;
   z-index: 1;
-  /* Blockabstände getrennt setzen: .wrap steuert nur die Seitenränder */
-  padding-block: clamp(34px, 5vw, 56px) clamp(44px, 7vw, 76px);
+  padding-block: clamp(34px, 5vw, 60px) clamp(44px, 7vw, 80px);
 }
 
 /* Kein Einblenden: Inhalte stehen sofort da. Die Klassen bleiben,
@@ -330,39 +364,38 @@ main {
   flex-wrap: wrap;
   align-items: center;
   gap: 12px 18px;
-  margin: 0 0 22px;
-  padding: 13px 16px 13px 22px;
+  margin: 0 0 24px;
+  padding: 13px 16px 13px 24px;
   border-radius: var(--r-md);
-  background: linear-gradient(180deg, #1b3d28, var(--pine));
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, .07), rgba(0, 0, 0, .1)),
+    linear-gradient(180deg, #453a32, var(--espresso-lo));
   color: var(--on-dark);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255, 246, 238, .10);
   overflow: hidden;
 }
 
+/* Bandkante links: dasselbe Satinband, hochkant */
 .adminbar::before {
   content: "";
   position: absolute;
   left: 0; top: 0; bottom: 0;
-  width: 8px;
-  background-color: #7e2130;
-  background-image: repeating-linear-gradient(0deg,
-    rgba(9, 30, 18, .62)    0px, rgba(9, 30, 18, .62)   3.6px,
-    rgba(0, 0, 0, 0)      3.6px, rgba(0, 0, 0, 0)      11.4px,
-    rgba(143, 47, 40, .8) 11.4px, rgba(143, 47, 40, .8) 18.6px,
-    rgba(0, 0, 0, 0)     18.6px, rgba(0, 0, 0, 0)      23.4px,
-    rgba(52, 97, 127, .62) 23.4px, rgba(52, 97, 127, .62) 27px,
-    rgba(0, 0, 0, 0)       27px, rgba(0, 0, 0, 0)       33px,
-    rgba(247, 242, 231, .7) 33px, rgba(247, 242, 231, .7) 35.4px,
-    rgba(0, 0, 0, 0)     35.4px, rgba(0, 0, 0, 0)       41.4px);
+  width: 7px;
+  background-image:
+    repeating-linear-gradient(0deg,
+      rgba(255, 252, 249, .22) 0px, rgba(255, 252, 249, .22) 1px,
+      rgba(90, 62, 50, .10) 1px, rgba(90, 62, 50, .10) 3px),
+    linear-gradient(90deg, #e7c8c0, #cf9f96 55%, #b07d75);
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .28);
 }
 
 .adminbar-label {
   flex: 1 1 auto;
   font-size: .72rem;
   font-weight: 600;
-  letter-spacing: .16em;
+  letter-spacing: .18em;
   text-transform: uppercase;
-  color: #b9cfae;
+  color: var(--on-dark-soft);
 }
 
 .adminbar-actions {
@@ -383,81 +416,81 @@ button {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 11px 20px;
+  padding: 11px 21px;
   border-radius: var(--r-pill);
   border: 1.5px solid transparent;
   font-family: var(--font-body);
   font-size: .95rem;
   font-weight: 600;
-  letter-spacing: .01em;
+  letter-spacing: .012em;
   text-align: center;
   transition: background-color .18s ease, color .18s ease,
               border-color .18s ease, box-shadow .18s ease, transform .12s ease;
 }
 
 .primary {
-  background: var(--fairway);
-  border-color: var(--fairway);
-  color: #fdfbf3;
-  box-shadow: var(--shadow-sm);
+  background: linear-gradient(180deg, #b4746d, var(--rose));
+  border-color: var(--rose);
+  color: #fffaf6;
+  box-shadow: var(--shadow-sm), inset 0 1px 0 rgba(255, 255, 255, .22);
 }
 
 .primary:hover {
-  background: var(--fairway-dark);
-  border-color: var(--fairway-dark);
-  box-shadow: var(--shadow-md);
+  background: linear-gradient(180deg, #a4645d, var(--rose-dark));
+  border-color: var(--rose-dark);
+  box-shadow: var(--shadow-md), inset 0 1px 0 rgba(255, 255, 255, .18);
   transform: translateY(-1px);
 }
 
 .primary:active {
   transform: translateY(0);
-  background: #123a24;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, .22);
+  background: #85504a;
+  box-shadow: inset 0 2px 5px rgba(52, 30, 26, .3);
 }
 
 .primary:focus-visible { outline: none; box-shadow: var(--ring); }
 
 .primary:disabled {
-  background: var(--sand-deep);
-  border-color: var(--sand-deep);
-  color: #7e7663;
+  background: var(--shell-deep);
+  border-color: var(--shell-deep);
+  color: #8b7a6c;
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
 }
 
-/* Der Gegenpol: alles, was rücknimmt oder abbricht */
+/* Der Gegenpol: alles, was zurücknimmt oder abbricht – Ton statt Puder */
 .ghost {
   background: transparent;
-  border-color: rgba(143, 47, 40, .45);
-  color: var(--claret);
+  border-color: rgba(140, 105, 82, .42);
+  color: var(--clay);
 }
 
 .ghost:hover {
-  background: rgba(143, 47, 40, .08);
-  border-color: var(--claret);
+  background: rgba(140, 105, 82, .09);
+  border-color: var(--clay);
 }
 
-.ghost:active { background: rgba(143, 47, 40, .16); }
+.ghost:active { background: rgba(140, 105, 82, .17); }
 
 .ghost:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(143, 47, 40, .18), 0 0 0 1.5px var(--claret);
+  box-shadow: 0 0 0 3px rgba(140, 105, 82, .18), 0 0 0 1.5px var(--clay);
 }
 
 /* auf dunklem Grund (Admin-Leiste) */
 .adminbar .ghost {
-  border-color: rgba(244, 239, 226, .38);
+  border-color: rgba(246, 239, 232, .34);
   color: var(--on-dark);
 }
 
 .adminbar .ghost:hover {
-  background: rgba(244, 239, 226, .12);
-  border-color: rgba(244, 239, 226, .7);
+  background: rgba(246, 239, 232, .12);
+  border-color: rgba(246, 239, 232, .7);
 }
 
 .primary.small, .ghost.small {
-  padding: 8px 15px;
+  padding: 8px 16px;
   font-size: .87rem;
 }
 
@@ -465,22 +498,26 @@ button {
   padding: 2px 1px;
   border: 0;
   background: none;
-  color: var(--thistle);
+  color: var(--clay);
   font-size: .9rem;
   font-weight: 500;
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
-  transition: color .15s ease;
+  text-decoration-color: rgba(140, 105, 82, .45);
+  transition: color .15s ease, text-decoration-color .15s ease;
 }
 
-.linkish:hover { color: var(--claret); }
+.linkish:hover {
+  color: var(--rose);
+  text-decoration-color: var(--rose);
+}
 
 .icon-btn {
-  padding: 6px 12px;
-  border: 1px solid var(--sand-line);
+  padding: 6px 13px;
+  border: 1px solid var(--shell);
   border-radius: var(--r-pill);
-  background: var(--cream);
+  background: var(--linen);
   color: var(--ink-soft);
   font-size: .8rem;
   font-weight: 500;
@@ -488,65 +525,59 @@ button {
 }
 
 .icon-btn:hover {
-  background: var(--sand);
-  border-color: var(--sand-deep);
-  color: var(--ink);
+  background: var(--rose-veil);
+  border-color: var(--rose-soft);
+  color: var(--rose-dark);
 }
 
-.icon-btn:active { background: var(--sand-deep); }
+.icon-btn:active { background: var(--rose-soft); }
 
 /* ---------- 9. Formular-Panel ------------------------------- */
 
 .panel {
   position: relative;
-  margin: 0 0 26px;
-  padding: clamp(22px, 3.6vw, 32px);
-  border: 1px solid var(--sand-line);
+  margin: 0 0 28px;
+  padding: clamp(24px, 3.6vw, 34px);
+  border: 1px solid var(--shell);
   border-radius: var(--r-lg);
-  background: var(--paper);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, .8), rgba(255, 255, 255, 0) 140px),
+    var(--paper);
   box-shadow: var(--shadow-md);
   overflow: hidden;
 }
 
+/* Bandkante oben */
 .panel::before {
   content: "";
   position: absolute;
   left: 0; right: 0; top: 0;
-  height: 6px;
-  background-color: #7e2130;
-  background-image: repeating-linear-gradient(90deg,
-    #7e2130 0.00px, #7e2130 2.64px,
-    #ece3d1 2.64px, #ece3d1 3.52px,
-    #7e2130 3.52px, #7e2130 16.72px,
-    #1d4732 16.72px, #1d4732 22.00px,
-    #7e2130 22.00px, #7e2130 23.32px,
-    #1d4732 23.32px, #1d4732 28.60px,
-    #7e2130 28.60px, #7e2130 29.92px,
-    #1d4732 29.92px, #1d4732 35.20px,
-    #7e2130 35.20px, #7e2130 36.52px,
-    #1d4732 36.52px, #1d4732 41.80px,
-    #7e2130 41.80px, #7e2130 55.00px,
-    #ece3d1 55.00px, #ece3d1 55.88px);
+  height: 4px;
+  background-image:
+    repeating-linear-gradient(90deg,
+      rgba(255, 252, 249, .22) 0px, rgba(255, 252, 249, .22) 1px,
+      rgba(140, 105, 82, .07) 1px, rgba(140, 105, 82, .07) 3px),
+    linear-gradient(180deg, #edd2cb, #d3a89f);
 }
 
 .panel h2 {
-  margin: 4px 0 20px;
-  font-size: clamp(1.4rem, 3vw, 1.75rem);
-  color: var(--pine);
+  margin: 6px 0 22px;
+  font-size: clamp(1.45rem, 3vw, 1.8rem);
+  color: #33291f;
 }
 
-.field { margin: 0 0 16px; }
+.field { margin: 0 0 17px; }
 
 .field label {
   display: block;
-  margin: 0 0 6px;
+  margin: 0 0 7px;
   font-size: .86rem;
   font-weight: 600;
-  letter-spacing: .01em;
+  letter-spacing: .012em;
   color: var(--ink-soft);
 }
 
-.req { color: var(--claret); }
+.req { color: var(--rose); }
 
 .hint {
   font-weight: 400;
@@ -558,29 +589,30 @@ input[type="text"],
 input[type="url"],
 input[type="password"] {
   width: 100%;
-  padding: 11px 14px;
-  border: 1.5px solid var(--sand-line);
+  padding: 12px 15px;
+  border: 1.5px solid var(--shell);
   border-radius: var(--r-sm);
-  background: #fffefb;
+  background: #fffefc;
   color: var(--ink);
   font: inherit;
   font-size: .97rem;
+  box-shadow: inset 0 1px 2px rgba(140, 105, 82, .05);
   transition: border-color .15s ease, box-shadow .15s ease, background-color .15s ease;
 }
 
-input::placeholder { color: #8c8b78; }
+input::placeholder { color: #a5958a; }
 
 input[type="text"]:hover,
 input[type="url"]:hover,
-input[type="password"]:hover { border-color: var(--sand-deep); }
+input[type="password"]:hover { border-color: var(--shell-deep); }
 
 input[type="text"]:focus,
 input[type="url"]:focus,
 input[type="password"]:focus {
   outline: none;
-  border-color: var(--fairway);
+  border-color: var(--rose-mid);
   background: #fff;
-  box-shadow: 0 0 0 3px rgba(31, 92, 58, .14);
+  box-shadow: 0 0 0 3px rgba(167, 106, 99, .15);
 }
 
 .row {
@@ -597,9 +629,9 @@ input[type="password"]:focus {
   flex-wrap: wrap;
   align-items: center;
   gap: 12px 14px;
-  margin-top: 22px;
-  padding-top: 20px;
-  border-top: 1px solid var(--sand-line);
+  margin-top: 24px;
+  padding-top: 21px;
+  border-top: 1px solid var(--shell);
 }
 
 .form-msg {
@@ -608,8 +640,8 @@ input[type="password"]:focus {
   color: var(--ink-soft);
 }
 
-.form-msg.ok    { color: var(--fairway); }
-.form-msg.error { color: var(--claret); }
+.form-msg.ok    { color: #7d6420; }
+.form-msg.error { color: var(--rose-dark); }
 
 /* Bildsuche */
 .imgstatus {
@@ -617,24 +649,24 @@ input[type="password"]:focus {
   flex-wrap: wrap;
   align-items: center;
   gap: 10px 14px;
-  margin: -4px 0 18px;
-  padding: 11px 14px;
-  border: 1px solid var(--sand-line);
-  border-left: 4px solid var(--sand-deep);
+  margin: -4px 0 19px;
+  padding: 12px 15px;
+  border: 1px solid var(--shell);
+  border-left: 4px solid var(--shell-deep);
   border-radius: var(--r-sm);
-  background: #faf6ec;
+  background: var(--linen);
   font-size: .88rem;
   color: var(--ink-soft);
 }
 
-.imgstatus.found  { border-left-color: var(--fairway-soft); background: #f1f6ee; }
-.imgstatus.failed { border-left-color: var(--claret-soft);  background: #fbf1ef; }
+.imgstatus.found  { border-left-color: var(--gold);      background: var(--gold-veil); }
+.imgstatus.failed { border-left-color: var(--rose-mid);  background: var(--rose-veil); }
 
 #image-preview {
   width: 46px;
   height: 46px;
   border-radius: var(--r-sm);
-  border: 1px solid var(--sand-line);
+  border: 1px solid var(--shell);
   object-fit: cover;
   background: #fff;
 }
@@ -644,36 +676,47 @@ input[type="password"]:focus {
 /* ---------- 10. Hinweise und leere Liste -------------------- */
 
 .notice {
-  margin: 0 0 24px;
+  margin: 0 0 26px;
   padding: 16px 20px;
-  border: 1px solid rgba(143, 47, 40, .28);
-  border-left: 5px solid var(--claret);
+  border: 1px solid rgba(167, 106, 99, .26);
+  border-left: 5px solid var(--rose);
   border-radius: var(--r-md);
-  background: #fbf2f0;
-  color: #6c2822;
+  background: var(--rose-veil);
+  color: #6d4340;
   font-size: .95rem;
   line-height: 1.6;
   box-shadow: var(--shadow-sm);
 }
 
-.notice strong { color: var(--claret); }
+.notice strong { color: var(--rose-dark); }
 
 .notice code {
   padding: 1px 6px;
   border-radius: 4px;
-  background: rgba(143, 47, 40, .1);
+  background: rgba(167, 106, 99, .11);
   font-size: .88em;
 }
 
 .empty {
-  margin: 28px 0 0;
-  padding: 40px 24px;
-  border: 1px dashed var(--sand-deep);
+  margin: 30px 0 0;
+  padding: 46px 24px;
+  border: 1.5px dashed var(--shell-deep);
   border-radius: var(--r-lg);
-  background: rgba(255, 253, 248, .6);
+  background: rgba(255, 252, 249, .66);
   text-align: center;
   color: var(--ink-soft);
   font-size: 1.02rem;
+}
+
+/* kleine Schleife über dem leeren Zustand statt einer nackten Zeile */
+.empty::before {
+  content: "";
+  display: block;
+  width: 34px;
+  height: 34px;
+  margin: 0 auto 12px;
+  opacity: .55;
+  background: center / contain no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a76a63' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 12c-1.6-2.4-3.2-3.6-4.9-3.6a2.9 2.9 0 0 0 0 5.8c1.7 0 3.3-1.2 4.9-3.6z'/%3E%3Cpath d='M12 12c1.6-2.4 3.2-3.6 4.9-3.6a2.9 2.9 0 0 1 0 5.8c-1.7 0-3.3-1.2-4.9-3.6z'/%3E%3Cpath d='M12 12l-2.4 7.4M12 12l2.4 7.4'/%3E%3Ccircle cx='12' cy='12' r='1.5'/%3E%3C/svg%3E");
 }
 
 /* ---------- 11. Wunschliste: Zeilen untereinander ----------- */
@@ -690,22 +733,24 @@ input[type="password"]:focus {
   grid-template-columns: 96px minmax(0, 1fr) auto;
   gap: 12px 22px;
   align-items: center;
-  padding: 34px 20px 16px;
-  border: 1px solid var(--sand-line);
+  padding: 34px 20px 18px;
+  border: 1px solid var(--shell);
   border-radius: var(--r-lg);
-  background: var(--paper);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, .7), rgba(255, 255, 255, 0) 90px),
+    var(--paper);
   box-shadow: var(--shadow-sm);
   transition: box-shadow .25s ease, transform .25s ease, border-color .25s ease;
 }
 
 .wish:hover {
   transform: translateY(-2px);
-  border-color: var(--sand-deep);
+  border-color: var(--rose-soft);
   box-shadow: var(--shadow-md);
 }
 
 .wish:focus-within {
-  border-color: var(--fairway-soft);
+  border-color: var(--rose-mid);
   box-shadow: var(--shadow-md);
 }
 
@@ -714,40 +759,47 @@ input[type="password"]:focus {
   width: 96px;
   height: 96px;
   object-fit: contain;
-  padding: 7px;
-  border: 1px solid var(--sand-line);
+  padding: 8px;
+  border: 1px solid var(--shell);
   border-radius: var(--r-md);
-  background: #fbf8f0;
+  background: #fffdfb;
+  box-shadow: inset 0 1px 3px rgba(140, 105, 82, .07);
   transition: transform .3s ease;
 }
 
 .wish:hover .thumb { transform: scale(1.03); }
 
-/* Ohne Produktbild steht an gleicher Stelle ein Fairway-Feld mit Golfball,
-   damit alle Zeilen sauber in einer Flucht bleiben. */
+/* Ohne Produktbild steht an gleicher Stelle ein Leinenfeld mit
+   Schleife, damit alle Zeilen sauber in einer Flucht bleiben. */
 .wish.no-image::before {
   content: "";
   grid-row: 1;
   width: 96px;
   height: 96px;
   border-radius: var(--r-md);
-  border: 1px solid rgba(20, 48, 31, .25);
-  background-color: #1e563a;
+  border: 1px solid var(--shell);
+  background-color: var(--linen);
   background-image:
-    radial-gradient(circle 11px at 50% 50%, rgba(253, 251, 245, .95) 98%, rgba(0, 0, 0, 0) 100%),
-    repeating-linear-gradient(112deg,
-      rgba(255, 255, 255, .06) 0px, rgba(255, 255, 255, .06) 16px,
-      rgba(0, 0, 0, 0) 16px, rgba(0, 0, 0, 0) 32px);
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23bd9086' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 12c-1.6-2.4-3.2-3.6-4.9-3.6a2.9 2.9 0 0 0 0 5.8c1.7 0 3.3-1.2 4.9-3.6z'/%3E%3Cpath d='M12 12c1.6-2.4 3.2-3.6 4.9-3.6a2.9 2.9 0 0 1 0 5.8c-1.7 0-3.3-1.2-4.9-3.6z'/%3E%3Cpath d='M12 12l-2.4 7.4M12 12l2.4 7.4'/%3E%3Ccircle cx='12' cy='12' r='1.5'/%3E%3C/svg%3E"),
+    /* feines Leinengewebe: zwei gekreuzte Rippen */
+    repeating-linear-gradient(90deg, rgba(140, 105, 82, .045) 0 1px, rgba(0, 0, 0, 0) 1px 5px),
+    repeating-linear-gradient(0deg,  rgba(140, 105, 82, .045) 0 1px, rgba(0, 0, 0, 0) 1px 5px);
+  background-size: 42px 42px, auto, auto;
+  background-position: center, 0 0, 0 0;
+  background-repeat: no-repeat, repeat, repeat;
+  box-shadow: inset 0 1px 3px rgba(140, 105, 82, .08);
 }
 
 .wish-body { min-width: 0; }
 
 .wish-title {
   margin: 0;
-  font-size: 1.25rem;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
   font-weight: 600;
-  line-height: 1.25;
-  color: var(--pine);
+  line-height: 1.24;
+  letter-spacing: -.01em;
+  color: #33291f;
   overflow-wrap: anywhere;
   text-wrap: pretty;
 }
@@ -757,34 +809,35 @@ input[type="password"]:focus {
   flex-wrap: wrap;
   align-items: center;
   gap: 7px 10px;
-  margin: 9px 0 0;
+  margin: 10px 0 0;
   font-size: .87rem;
 }
 
 .price {
   display: inline-flex;
   align-items: center;
-  padding: 3px 11px;
+  padding: 3px 12px;
   border-radius: var(--r-pill);
-  background: rgba(31, 92, 58, .1);
-  color: var(--fairway-dark);
+  border: 1px solid rgba(185, 149, 79, .3);
+  background: var(--gold-veil);
+  color: #7d6420;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
   letter-spacing: .01em;
 }
 
 .wish-meta a {
-  color: var(--thistle);
+  color: var(--clay);
   text-decoration: none;
-  border-bottom: 1px solid rgba(52, 97, 127, .35);
+  border-bottom: 1px solid rgba(140, 105, 82, .35);
   padding-bottom: 1px;
   overflow-wrap: anywhere;
   transition: color .15s ease, border-color .15s ease;
 }
 
 .wish-meta a:hover {
-  color: var(--claret);
-  border-bottom-color: var(--claret);
+  color: var(--rose);
+  border-bottom-color: var(--rose);
 }
 
 /* Status: „Offen" für freie Zeilen, der Badge für vergebene – beide
@@ -794,15 +847,15 @@ input[type="password"]:focus {
   position: absolute;
   top: 13px;
   right: 18px;
-  padding: 3px 11px 3px 22px;
-  border: 1px solid rgba(31, 92, 58, .3);
+  padding: 3px 12px 3px 23px;
+  border: 1px solid rgba(185, 149, 79, .38);
   border-radius: var(--r-pill);
-  background: rgba(31, 92, 58, .08)
-    radial-gradient(circle 3.4px at 12px 50%, var(--fairway) 98%, rgba(0, 0, 0, 0) 100%) no-repeat;
-  color: var(--fairway-dark);
-  font-size: .72rem;
+  background: var(--gold-veil)
+    radial-gradient(circle 3.4px at 12px 50%, var(--gold) 98%, rgba(0, 0, 0, 0) 100%) no-repeat;
+  color: #7d6420;
+  font-size: .71rem;
   font-weight: 600;
-  letter-spacing: .06em;
+  letter-spacing: .08em;
   text-transform: uppercase;
 }
 
@@ -812,21 +865,19 @@ input[type="password"]:focus {
   right: 18px;
   display: inline-flex;
   align-items: center;
-  padding: 3px 11px;
+  padding: 3px 12px;
   border-radius: var(--r-pill);
-  background: rgba(143, 47, 40, .1);
-  border: 1px solid rgba(143, 47, 40, .26);
-  color: var(--claret);
-  font-size: .72rem;
+  background: rgba(167, 106, 99, .12);
+  border: 1px solid rgba(167, 106, 99, .28);
+  color: var(--rose-dark);
+  font-size: .71rem;
   font-weight: 600;
-  letter-spacing: .06em;
+  letter-spacing: .08em;
   text-transform: uppercase;
 }
 
 .wish-note {
-  margin: 9px 0 0;
-  padding: 2px 0 2px 12px;
-  border-left: 3px solid var(--sand-deep);
+  margin: 10px 0 0;
   color: var(--ink-soft);
   font-size: .88rem;
   line-height: 1.5;
@@ -849,14 +900,14 @@ input[type="password"]:focus {
 
 /* vergebene Wünsche treten zurück, bleiben aber gut lesbar */
 .wish.taken {
-  background: #f6f2e8;
-  border-color: var(--sand-deep);
+  background: #f6efe9;
+  border-color: var(--shell-deep);
   box-shadow: none;
 }
 
 .wish.taken:hover { transform: none; box-shadow: var(--shadow-sm); }
 
-.wish.taken .thumb { opacity: .65; }
+.wish.taken .thumb { opacity: .62; }
 
 .wish.taken .wish-title { color: var(--ink-soft); }
 
@@ -866,7 +917,7 @@ input[type="password"]:focus {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: clamp(10px, 1.6vw, 16px);
-  margin: clamp(26px, 4vw, 40px) 0 0;
+  margin: clamp(28px, 4vw, 42px) 0 0;
 }
 
 .stat {
@@ -875,10 +926,12 @@ input[type="password"]:focus {
   flex-direction: column;
   align-items: flex-start;
   gap: 3px;
-  padding: 18px 20px 17px;
-  border: 1px solid var(--sand-line);
+  padding: 19px 20px 17px;
+  border: 1px solid var(--shell);
   border-radius: var(--r-md);
-  background: var(--paper);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, .75), rgba(255, 255, 255, 0) 70px),
+    var(--paper);
   box-shadow: var(--shadow-sm);
   overflow: hidden;
   transition: transform .25s ease, box-shadow .25s ease;
@@ -893,12 +946,12 @@ input[type="password"]:focus {
   content: "";
   position: absolute;
   left: 0; right: 0; top: 0;
-  height: 4px;
-  background: var(--fairway);
+  height: 3px;
+  background: var(--clay);
 }
 
-.stat:nth-child(2)::before { background: var(--thistle); }
-.stat:nth-child(3)::before { background: var(--claret); }
+.stat:nth-child(2)::before { background: var(--gold); }
+.stat:nth-child(3)::before { background: var(--rose); }
 
 .stat-icon {
   display: inline-flex;
@@ -906,16 +959,16 @@ input[type="password"]:focus {
   color: var(--ink-faint);
 }
 
-.stat:nth-child(1) .stat-icon { color: var(--fairway); }
-.stat:nth-child(2) .stat-icon { color: var(--thistle); }
-.stat:nth-child(3) .stat-icon { color: var(--fairway); }
+.stat:nth-child(1) .stat-icon { color: var(--clay); }
+.stat:nth-child(2) .stat-icon { color: var(--gold); }
+.stat:nth-child(3) .stat-icon { color: var(--rose); }
 
 .stat-num {
   font-family: var(--font-display);
-  font-size: clamp(1.7rem, 4.4vw, 2.3rem);
+  font-size: clamp(1.75rem, 4.4vw, 2.4rem);
   font-weight: 700;
   line-height: 1;
-  color: var(--pine);
+  color: #33291f;
   font-variant-numeric: tabular-nums;
 }
 
@@ -930,15 +983,15 @@ input[type="password"]:focus {
 .toolbar {
   display: flex;
   justify-content: center;
-  margin: 16px 0 0;
+  margin: 18px 0 0;
 }
 
 .switch {
   display: inline-flex;
   align-items: center;
   gap: 11px;
-  padding: 8px 16px 8px 12px;
-  border: 1px solid var(--sand-line);
+  padding: 8px 17px 8px 12px;
+  border: 1px solid var(--shell);
   border-radius: var(--r-pill);
   background: var(--paper);
   box-shadow: var(--shadow-sm);
@@ -951,7 +1004,7 @@ input[type="password"]:focus {
 }
 
 .switch:hover {
-  border-color: var(--sand-deep);
+  border-color: var(--rose-soft);
   color: var(--ink);
 }
 
@@ -964,25 +1017,24 @@ input[type="password"]:focus {
   margin: 0;
   border: 0;
   border-radius: var(--r-pill);
-  background-color: var(--sand-deep);
-  background-image: radial-gradient(circle 8.5px at 12px 12px, #fffdf8 99%, rgba(0, 0, 0, 0) 100%);
+  background-color: var(--shell-deep);
+  background-image: radial-gradient(circle 8.5px at 12px 12px, #fffdfb 99%, rgba(0, 0, 0, 0) 100%);
   background-repeat: no-repeat;
   background-position: 0 0;
-  box-shadow: inset 0 1px 3px rgba(20, 48, 31, .2);
+  box-shadow: inset 0 1px 3px rgba(140, 105, 82, .28);
   cursor: pointer;
   transition: background-color .2s ease, background-position .2s cubic-bezier(.3, .8, .3, 1);
 }
 
 .switch input:checked {
-  background-color: var(--fairway);
+  background-color: var(--rose);
   background-position: 18px 0;
 }
 
 .switch input:focus-visible {
   outline: none;
-  box-shadow: inset 0 1px 3px rgba(20, 48, 31, .2), var(--ring);
+  box-shadow: inset 0 1px 3px rgba(140, 105, 82, .28), var(--ring);
 }
-
 
 /* ---------- 13b. Kleine Symbole in den Zeilen ---------------- */
 
@@ -999,18 +1051,16 @@ input[type="password"]:focus {
   background: center / contain no-repeat;
 }
 
-.price::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23184a2e' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='8.4'/%3E%3Cpath d='M12 7.6v8.8M14.4 9.6a2.6 2.6 0 0 0-4.6 1.4c0 2.6 4.8 1.4 4.8 4a2.6 2.6 0 0 1-4.7 1.3'/%3E%3C/svg%3E"); }
+.price::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237d6420' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='8.4'/%3E%3Cpath d='M12 7.6v8.8M14.4 9.6a2.6 2.6 0 0 0-4.6 1.4c0 2.6 4.8 1.4 4.8 4a2.6 2.6 0 0 1-4.7 1.3'/%3E%3C/svg%3E"); }
 
-.wish-meta a::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2334617f' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10.2 13.8a4 4 0 0 0 5.7 0l2.6-2.6a4 4 0 1 0-5.7-5.7l-1.5 1.5'/%3E%3Cpath d='M13.8 10.2a4 4 0 0 0-5.7 0l-2.6 2.6a4 4 0 1 0 5.7 5.7l1.5-1.5'/%3E%3C/svg%3E"); }
+.wish-meta a::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238c6952' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10.2 13.8a4 4 0 0 0 5.7 0l2.6-2.6a4 4 0 1 0-5.7-5.7l-1.5 1.5'/%3E%3Cpath d='M13.8 10.2a4 4 0 0 0-5.7 0l-2.6 2.6a4 4 0 1 0 5.7 5.7l1.5-1.5'/%3E%3C/svg%3E"); }
 
-.wish-note::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7364' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 21s6.6-6.2 6.6-11A6.6 6.6 0 0 0 5.4 10c0 4.8 6.6 11 6.6 11z'/%3E%3Ccircle cx='12' cy='10' r='2.4'/%3E%3C/svg%3E"); }
+.wish-note::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238d7b6e' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20.5 6.5H8.8L3.5 12l5.3 5.5h11.7z'/%3E%3Ccircle cx='7.6' cy='12' r='1.1' fill='%238d7b6e' stroke='none'/%3E%3C/svg%3E"); }
 
 .wish-note {
   display: flex;
   align-items: flex-start;
   gap: 0;
-  border-left: 0;
-  padding-left: 0;
 }
 
 .wish-note::before { margin-top: 3px; }
@@ -1025,24 +1075,26 @@ input[type="password"]:focus {
   background: center / contain no-repeat;
 }
 
-.wish-actions > .primary::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fdfbf3' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 21V4M6 5l11 3.4L6 12'/%3E%3C/svg%3E"); }
+/* Reservieren: eine kleine Schleife */
+.wish-actions > .primary::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fffaf6' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 12c-1.6-2.4-3.2-3.6-4.9-3.6a2.9 2.9 0 0 0 0 5.8c1.7 0 3.3-1.2 4.9-3.6z'/%3E%3Cpath d='M12 12c1.6-2.4 3.2-3.6 4.9-3.6a2.9 2.9 0 0 1 0 5.8c-1.7 0-3.3-1.2-4.9-3.6z'/%3E%3Cpath d='M12 12l-2.4 7.4M12 12l2.4 7.4'/%3E%3C/svg%3E"); }
 
-.wish-actions > .ghost::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238f2f28' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 9h9.5a5.5 5.5 0 1 1 0 11H8'/%3E%3Cpath d='M7.5 5L4 9l3.5 4'/%3E%3C/svg%3E"); }
+/* Aufheben: der Pfeil zurück */
+.wish-actions > .ghost::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238c6952' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 9h9.5a5.5 5.5 0 1 1 0 11H8'/%3E%3Cpath d='M7.5 5L4 9l3.5 4'/%3E%3C/svg%3E"); }
 
 /* ---------- 14. Reservieren / Aufheben ---------------------- */
 
 .wish-lock {
   grid-column: 1 / -1;
-  margin: 2px 0 0;
-  padding: 14px 16px;
-  border: 1px solid var(--sand-line);
+  margin: 4px 0 0;
+  padding: 15px 17px;
+  border: 1px solid var(--shell);
   border-radius: var(--r-md);
-  background: linear-gradient(180deg, #f7f2e7, #f3ecdd);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .7);
+  background: linear-gradient(180deg, var(--rose-veil), #f6ece6);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .8);
 }
 
 .lock-hint {
-  margin: 0 0 11px;
+  margin: 0 0 12px;
   font-size: .84rem;
   line-height: 1.5;
   color: var(--ink-soft);
@@ -1059,7 +1111,7 @@ input[type="password"]:focus {
   flex: 1 1 160px;
   max-width: 320px;
   min-width: 0;
-  padding: 9px 12px;
+  padding: 10px 13px;
   font-size: .92rem;
 }
 
@@ -1072,25 +1124,32 @@ input[type="password"]:focus {
 
 .lock-msg:empty { display: none; }
 
-.lock-msg.error { color: var(--claret); }
+.lock-msg.error { color: var(--rose-dark); }
 
 /* ---------- 15. Platzhalter beim Laden ---------------------- */
 
 .skeleton {
   height: 130px;
-  border: 1px solid var(--sand-line);
+  border: 1px solid var(--shell);
   border-radius: var(--r-lg);
-  background: #f4eee1;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, .55), rgba(255, 255, 255, 0))
+      0 0 / 220px 100% no-repeat,
+    var(--linen);
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  from { background-position: -220px 0; }
+  to   { background-position: calc(100% + 220px) 0; }
 }
 
 /* ---------- 17. Seitenabschluss ----------------------------- */
-/* Unter dem Inhalt nur noch der Zugang zum Admin-Modus, darunter das
-   Karo-Band als Schlusskante der Seite. Kein Text, kein Zeichen. */
 
 footer {
   position: relative;
   z-index: 1;
-  padding: clamp(30px, 5vw, 48px) var(--gutter) clamp(26px, 4vw, 40px);
+  padding: clamp(30px, 5vw, 50px) var(--gutter) clamp(26px, 4vw, 42px);
   text-align: center;
 }
 
@@ -1102,7 +1161,7 @@ footer {
   font-weight: 400;
 }
 
-#login-open:hover { color: var(--fairway); }
+#login-open:hover { color: var(--rose); }
 
 #login-form {
   display: flex;
@@ -1112,8 +1171,8 @@ footer {
   gap: 9px;
   max-width: 420px;
   margin: 0 auto;
-  padding: 14px 16px;
-  border: 1px solid var(--sand-line);
+  padding: 15px 17px;
+  border: 1px solid var(--shell);
   border-radius: var(--r-md);
   background: var(--paper);
   box-shadow: var(--shadow-sm);
@@ -1122,7 +1181,7 @@ footer {
 #login-pw {
   flex: 1 1 150px;
   min-width: 0;
-  padding: 9px 13px;
+  padding: 10px 14px;
 }
 
 .login-msg {
@@ -1134,9 +1193,9 @@ footer {
 
 .login-msg:empty { display: none; }
 
-.login-msg.error { color: var(--claret); }
+.login-msg.error { color: var(--rose-dark); }
 
-/* Das Karo schließt die Seite ab */
+/* Das Band schließt die Seite ab */
 body > .tartan-band {
   position: relative;
   z-index: 1;
@@ -1149,6 +1208,8 @@ body > .tartan-band {
   .wish { grid-template-columns: 84px minmax(0, 1fr); }
 
   .thumb, .wish.no-image::before { width: 84px; height: 84px; }
+
+  .wish.no-image::before { background-size: 38px 38px, auto, auto; }
 
   .wish-actions {
     grid-column: 1 / -1;
@@ -1167,8 +1228,8 @@ body > .tartan-band {
 @media (max-width: 860px) {
   .hero::before {
     background: linear-gradient(178deg,
-      rgba(250, 246, 236, .96) 0%, rgba(250, 246, 236, .9) 46%,
-      rgba(250, 246, 236, .55) 70%, rgba(250, 246, 236, .1) 100%);
+      rgba(252, 246, 241, .96) 0%, rgba(252, 246, 241, .9) 46%,
+      rgba(251, 243, 238, .58) 70%, rgba(250, 241, 236, .12) 100%);
   }
   .hero-script { display: none; }
 }
@@ -1189,7 +1250,7 @@ body > .tartan-band {
   .adminbar-actions > .primary,
   .adminbar-actions > .ghost { flex: 1 1 auto; }
 
-  /* die Fahne wird beim Stauchen zum Strich – auf schmalen Geräten weglassen */
+  /* feine Details der Kopfgrafik verschwinden beim Stauchen */
   .hero-flag { display: none; }
 
   .summary { gap: 8px; }
@@ -1240,15 +1301,9 @@ body > .tartan-band {
 
   .thumb, .wish.no-image::before { width: 68px; height: 68px; }
 
-  .wish.no-image::before {
-    background-image:
-      radial-gradient(circle 8px at 50% 50%, rgba(253, 251, 245, .95) 98%, rgba(0, 0, 0, 0) 100%),
-      repeating-linear-gradient(112deg,
-        rgba(255, 255, 255, .06) 0px, rgba(255, 255, 255, .06) 12px,
-        rgba(0, 0, 0, 0) 12px, rgba(0, 0, 0, 0) 24px);
-  }
+  .wish.no-image::before { background-size: 32px 32px, auto, auto; }
 
-  .wish-title { font-size: 1.12rem; }
+  .wish-title { font-size: 1.14rem; }
 
   .stat-label { letter-spacing: .07em; font-size: .68rem; }
 }
@@ -1277,6 +1332,8 @@ body > .tartan-band {
   .wish:hover, .primary:hover, .stat:hover { transform: none; }
 
   .wish:hover .thumb { transform: none; }
+
+  .skeleton { animation: none; }
 }
 
 /* ---------- 21. Druck --------------------------------------- */
@@ -1288,6 +1345,8 @@ body > .tartan-band {
   body { background: #fff; }
 
   .hero { background: none; color: #000; min-height: 0; padding: 0 0 16px; }
+
+  .hero::before, .hero::after { display: none; }
 
   .hero h1 { color: #000; }
 

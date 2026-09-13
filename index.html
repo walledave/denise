@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Denises Wunschliste</title>
 <meta name="description" content="Denises Wunschliste – wer etwas schenkt, hakt es hier ab, damit niemand doppelt kauft.">
-<meta name="theme-color" content="#14301f">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛳</text></svg>">
+<meta name="theme-color" content="#f4e5db">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎀</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap">
-<link rel="stylesheet" href="css/style.css?v=28">
+<link rel="stylesheet" href="css/style.css?v=29">
 </head>
 <body id="top">
 
@@ -23,163 +23,108 @@
   <div class="hero-scene" aria-hidden="true">
     <svg viewBox="0 0 1440 620" preserveAspectRatio="xMidYMax slice" role="presentation" focusable="false">
       <defs>
-        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0"    stop-color="#8fb8c9"/>
-          <stop offset=".3"   stop-color="#c4d5d0"/>
-          <stop offset=".62"  stop-color="#efdfbd"/>
-          <stop offset=".86"  stop-color="#f4e3ba"/>
-          <stop offset="1"    stop-color="#e9d6a8"/>
+        <linearGradient id="airG" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0"   stop-color="#fbf3ec"/>
+          <stop offset=".38" stop-color="#f4e5db"/>
+          <stop offset=".72" stop-color="#e9d3c6"/>
+          <stop offset="1"   stop-color="#dfc4b5"/>
         </linearGradient>
-        <radialGradient id="sun" cx=".66" cy=".49" r=".42">
-          <stop offset="0"   stop-color="#fff6dd" stop-opacity=".95"/>
-          <stop offset=".28" stop-color="#ffeec0" stop-opacity=".55"/>
-          <stop offset="1"   stop-color="#ffeec0" stop-opacity="0"/>
+        <radialGradient id="lightG" cx=".22" cy=".16" r=".72">
+          <stop offset="0"   stop-color="#fffaf3" stop-opacity=".95"/>
+          <stop offset=".42" stop-color="#fdf1e6" stop-opacity=".45"/>
+          <stop offset="1"   stop-color="#fdf1e6" stop-opacity="0"/>
         </radialGradient>
-        <linearGradient id="hillFar" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#7d9a80"/><stop offset="1" stop-color="#9db38c"/>
+        <linearGradient id="tableG" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0"   stop-color="#e0c7b4"/>
+          <stop offset=".5"  stop-color="#d6b9a5"/>
+          <stop offset="1"   stop-color="#c4a28c"/>
         </linearGradient>
-        <linearGradient id="hillMid" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#4d7551"/><stop offset="1" stop-color="#5f8a58"/>
+        <linearGradient id="clothG" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0"   stop-color="#eccfc7"/>
+          <stop offset=".55" stop-color="#dcb4ab"/>
+          <stop offset="1"   stop-color="#c2908a"/>
         </linearGradient>
-        <linearGradient id="mist" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0"   stop-color="#fdf6e4" stop-opacity="0"/>
-          <stop offset=".45" stop-color="#fdf6e4" stop-opacity=".5"/>
-          <stop offset="1"   stop-color="#fdf6e4" stop-opacity="0"/>
+        <linearGradient id="clothG2" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0"   stop-color="#e8d8c4"/>
+          <stop offset="1"   stop-color="#d0b596"/>
         </linearGradient>
-        <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0"   stop-color="#14301f" stop-opacity="0"/>
-          <stop offset=".55" stop-color="#14301f" stop-opacity=".14"/>
-          <stop offset="1"   stop-color="#14301f" stop-opacity=".42"/>
+        <linearGradient id="goldG" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0"   stop-color="#e6d3a6" stop-opacity="0"/>
+          <stop offset=".5"  stop-color="#c9a86a"/>
+          <stop offset="1"   stop-color="#e6d3a6" stop-opacity="0"/>
         </linearGradient>
-        <radialGradient id="spot" cx=".78" cy=".62" r=".5">
-          <stop offset="0" stop-color="#ffeec0" stop-opacity=".26"/>
-          <stop offset="1" stop-color="#ffeec0" stop-opacity="0"/>
-        </radialGradient>
-        <radialGradient id="vignette" cx=".5" cy=".4" r=".82">
+        <radialGradient id="vignetteG" cx=".5" cy=".42" r=".8">
           <stop offset=".45" stop-color="#000" stop-opacity="0"/>
-          <stop offset="1"   stop-color="#1b3a24" stop-opacity=".2"/>
+          <stop offset="1"   stop-color="#6b4c3c" stop-opacity=".22"/>
         </radialGradient>
-        <radialGradient id="sandG" cx=".42" cy=".3" r=".8">
-          <stop offset="0" stop-color="#f3e9cd"/><stop offset="1" stop-color="#c9b485"/>
-        </radialGradient>
-        <filter id="soft"><feGaussianBlur stdDeviation="3"/></filter>
-        <filter id="softer"><feGaussianBlur stdDeviation="7"/></filter>
-        <filter id="mistBlur"><feGaussianBlur stdDeviation="9"/></filter>
+        <filter id="soft"><feGaussianBlur stdDeviation="6"/></filter>
+        <filter id="softer"><feGaussianBlur stdDeviation="18"/></filter>
+        <filter id="haze"><feGaussianBlur stdDeviation="34"/></filter>
       </defs>
 
-      <rect width="1440" height="620" fill="url(#sky)"/>
-      <rect width="1440" height="620" fill="url(#sun)"/>
+      <!-- Warme Luft und ein Lichteinfall von links oben, wie im Foto -->
+      <rect width="1440" height="620" fill="url(#airG)"/>
+      <rect width="1440" height="620" fill="url(#lightG)"/>
 
-      <!-- Luftperspektive: hinten heller, weicher, flacher -->
-      <g filter="url(#softer)" opacity=".5">
-        <path d="M0 232 C 160 178, 316 208, 470 194 C 628 180, 748 212, 908 192
-                 C 1064 172, 1268 210, 1440 186 L1440 302 L0 302 Z" fill="url(#hillFar)"/>
-      </g>
-      <g filter="url(#soft)" opacity=".72">
-        <path d="M0 258 C 196 216, 352 250, 534 238 C 716 226, 866 258, 1052 240
-                 C 1222 224, 1342 252, 1440 242 L1440 306 L0 306 Z" fill="url(#hillMid)"/>
-      </g>
-
-      <!-- Baumreihe, unscharf wie eine echte Ferne -->
-      <g opacity=".9" filter="url(#soft)">
-        <path d="M0 282 q10-14 20-4 q9-16 19-3 q11-18 21-2 q8-13 18-3 q12-19 22-3
-                 q9-15 19-2 q11-17 21-3 q8-12 18-2 q12-18 22-3 q10-16 20-2 q11-17 21-3
-                 q9-13 19-2 q12-19 22-3 q10-15 20-2 q11-18 21-3 q8-12 18-2 q12-17 22-3
-                 q10-16 20-2 q11-18 21-2 q9-13 19-3 q12-18 22-2 q10-15 20-3 q11-17 21-2
-                 q8-13 18-3 q12-18 22-2 q10-16 20-3 q11-17 21-2 q9-12 19-3 q12-19 22-2
-                 q10-15 20-3 q11-17 21-2 q8-13 18-2 q12-18 22-3 q10-16 20-2 q11-17 21-3
-                 q9-12 19-2 q12-18 22-3 q10-15 20-2 q11-18 21-3 q8-12 18-2 q12-17 22-3
-                 q10-16 20-2 q11-18 21-2 q9-13 19-3 q12-18 22-2 q10-15 20-3 q11-17 21-2
-                 q8-13 18-3 q12-18 22-2 q10-16 20-3 q11-17 21-2 q9-12 19-3 q12-19 22-2
-                 q10-15 20-3 q11-17 21-2 q8-13 18-2 q12-18 22-3 q10-16 20-2 q11-17 21-3
-                 L1440 310 L0 310 Z" fill="#2d5138"/>
+      <!-- Bokeh: unscharfe Lichtpunkte in der Tiefe -->
+      <g filter="url(#haze)" opacity=".5">
+        <circle cx="250" cy="120" r="86"  fill="#fff6ea"/>
+        <circle cx="470" cy="70"  r="54"  fill="#fdeadf"/>
+        <circle cx="1180" cy="130" r="98" fill="#f4dcd2"/>
+        <circle cx="960" cy="60"  r="46"  fill="#fff3e6"/>
       </g>
 
-      <!-- Meer und Strandlinie links, wie an einem Links-Platz -->
-      <g>
-        <rect x="-20" y="262" width="700" height="52" fill="#8fadbc"/>
-        <path d="M-20 306 q120 10 250 4 q150-7 300 6 q90 8 150 4 v10 H-20 z" fill="#e8dcc0" opacity=".85"/>
-        <path d="M-20 300 h700" stroke="#fdf6e4" stroke-width="2" opacity=".45"/>
+      <!-- Tischkante: der Horizont dieser Szene -->
+      <path d="M0 318 C 300 300, 620 306, 900 300 C 1130 295, 1300 304, 1440 298 L1440 620 L0 620 Z"
+            fill="url(#tableG)"/>
+      <path d="M0 318 C 300 300, 620 306, 900 300 C 1130 295, 1300 304, 1440 298"
+            fill="none" stroke="#fdf3ea" stroke-width="2.5" opacity=".55"/>
+
+      <!-- Weicher Stoff, links über die Kante gelegt -->
+      <g filter="url(#soft)" opacity=".95">
+        <path d="M-40 372 C 120 336, 250 402, 400 372 C 520 348, 600 392, 680 380
+                 L 700 620 L -40 620 Z" fill="url(#clothG2)"/>
+      </g>
+      <g filter="url(#soft)" opacity=".9">
+        <path d="M-40 452 C 140 414, 300 476, 470 448 C 590 428, 660 466, 740 456
+                 L 760 620 L -40 620 Z" fill="url(#clothG)"/>
       </g>
 
-      <!-- Clubhaus aus Naturstein, rechts auf der Anhöhe -->
-      <g opacity=".95">
-        <path d="M1188 296v-52l22-18 22 18v52z" fill="#8d8272"/>
-        <path d="M1232 296v-40l26-20 26 20v40z" fill="#7d7365"/>
-        <path d="M1284 296v-30l20-15 20 15v30z" fill="#8d8272"/>
-        <path d="M1186 246l24-20 24 20z" fill="#4e463c"/>
-        <path d="M1230 258l28-22 28 22z" fill="#453e35"/>
-        <path d="M1282 267l22-17 22 17z" fill="#4e463c"/>
-        <g fill="#f6e6b8" opacity=".9">
-          <rect x="1200" y="258" width="7" height="10"/><rect x="1214" y="258" width="7" height="10"/>
-          <rect x="1200" y="276" width="7" height="10"/><rect x="1214" y="276" width="7" height="10"/>
-          <rect x="1248" y="270" width="8" height="11"/><rect x="1264" y="270" width="8" height="11"/>
-          <rect x="1296" y="278" width="7" height="9"/><rect x="1310" y="278" width="7" height="9"/>
+      <!-- Falten: ein paar helle Grate, mehr braucht es nicht -->
+      <g stroke="#fff6ee" stroke-linecap="round" fill="none" opacity=".4" filter="url(#soft)">
+        <path d="M60 500 C 180 470, 300 520, 420 496" stroke-width="7"/>
+        <path d="M40 556 C 200 528, 340 572, 500 548" stroke-width="6"/>
+        <path d="M120 424 C 240 400, 330 438, 440 420" stroke-width="5"/>
+      </g>
+
+      <!-- Rechts eine gestapelte Decke, warm angeleuchtet -->
+      <g opacity=".92">
+        <rect x="1040" y="392" width="392" height="54" rx="18" fill="#e0c6ae"/>
+        <rect x="1058" y="440" width="374" height="52" rx="18" fill="#d2b298"/>
+        <rect x="1030" y="486" width="410" height="56" rx="20" fill="#c09c81"/>
+        <g stroke="#fff4e9" stroke-width="2" opacity=".35" fill="none">
+          <path d="M1052 418h372M1070 466h356M1042 514h388"/>
         </g>
-        <path d="M1160 296 q60-8 120-4 q80 6 160 2 v14 H1160 z" fill="#3f6b47" opacity=".9"/>
       </g>
 
-      <!-- Fairway -->
-      <g>
-        <polygon points="760,300 -1400,620 -1170,620" fill="#4e8f56"/>
-        <polygon points="760,300 -1170,620 -940,620" fill="#43804d"/>
-        <polygon points="760,300 -940,620 -710,620" fill="#4e8f56"/>
-        <polygon points="760,300 -710,620 -480,620" fill="#43804d"/>
-        <polygon points="760,300 -480,620 -250,620" fill="#4e8f56"/>
-        <polygon points="760,300 -250,620 -20,620" fill="#43804d"/>
-        <polygon points="760,300 -20,620 210,620" fill="#4e8f56"/>
-        <polygon points="760,300 210,620 440,620" fill="#43804d"/>
-        <polygon points="760,300 440,620 670,620" fill="#4e8f56"/>
-        <polygon points="760,300 670,620 900,620" fill="#43804d"/>
-        <polygon points="760,300 900,620 1130,620" fill="#4e8f56"/>
-        <polygon points="760,300 1130,620 1360,620" fill="#43804d"/>
-        <polygon points="760,300 1360,620 1590,620" fill="#4e8f56"/>
-        <polygon points="760,300 1590,620 1820,620" fill="#43804d"/>
-        <polygon points="760,300 1820,620 2050,620" fill="#4e8f56"/>
-        <polygon points="760,300 2050,620 2280,620" fill="#43804d"/>
-        <polygon points="760,300 2280,620 2510,620" fill="#4e8f56"/>
-        <polygon points="760,300 2510,620 2740,620" fill="#43804d"/>
-        <polygon points="760,300 2740,620 2850,620" fill="#4e8f56"/>
+      <!-- Ein Band, das sich über den Tisch legt: die Leitfarbe der Seite -->
+      <g class="hero-flag" filter="url(#soft)" opacity=".85">
+        <path d="M690 336 C 810 312, 900 372, 1020 346 C 1108 327, 1160 352, 1224 342"
+              stroke="#c08d86" stroke-width="22" fill="none" stroke-linecap="round"/>
+        <path d="M690 336 C 810 312, 900 372, 1020 346 C 1108 327, 1160 352, 1224 342"
+              stroke="#efd7d1" stroke-width="6" fill="none" stroke-linecap="round" opacity=".7"/>
       </g>
 
-      <linearGradient id="flat" x1="0" y1="0" x2="0" y2="1" gradientUnits="userSpaceOnUse"
-                      y1="300" y2="470">
-        <stop offset="0"   stop-color="#4a8a53" stop-opacity=".92"/>
-        <stop offset=".55" stop-color="#4a8a53" stop-opacity=".42"/>
-        <stop offset="1"   stop-color="#4a8a53" stop-opacity="0"/>
-      </linearGradient>
-      <rect x="0" y="300" width="1440" height="170" fill="url(#flat)"/>
+      <!-- Zwei Goldfäden als ruhige Horizontale -->
+      <rect x="0" y="330" width="1440" height="1.6" fill="url(#goldG)" opacity=".8"/>
+      <rect x="0" y="337" width="1440" height="1"   fill="url(#goldG)" opacity=".45"/>
 
-      <!-- Bodennebel über der Ferne: verdeckt den Fluchtpunkt und trennt
-           Platz von Horizont, wie an einem feuchten Abend. -->
-      <rect x="-40" y="266" width="1520" height="86" fill="url(#mist)" filter="url(#mistBlur)"/>
-
-      <!-- Bunker: Schattenrand, Sandfläche, heller Grat -->
-      <g>
-        <ellipse cx="292" cy="452" rx="146" ry="32" fill="#0f2a19" opacity=".6" filter="url(#soft)"/>
-        <ellipse cx="294" cy="445" rx="132" ry="25" fill="#1a3c26"/>
-        <ellipse cx="296" cy="442" rx="124" ry="21" fill="url(#sandG)" opacity=".78"/>
-        <ellipse cx="298" cy="436" rx="96" ry="12" fill="#efe4c6" opacity=".3"/>
-        <path d="M172 441 a124 21 0 0 1 248 0" fill="none" stroke="#0f2a19"
-              stroke-width="3" opacity=".45" filter="url(#soft)"/>
-      </g>
-
-      <!-- Grün mit Fahne und Loch -->
-      <g class="hero-flag">
-        <ellipse cx="1136" cy="420" rx="196" ry="44" fill="#5aa367" opacity=".5" filter="url(#soft)"/>
-        <ellipse cx="1136" cy="416" rx="160" ry="34" fill="#65b071" opacity=".45"/>
-        <ellipse cx="1136" cy="414" rx="10" ry="4" fill="#08170e"/>
-        <path d="M1136 414V300" stroke="#f7f3e8" stroke-width="3" stroke-linecap="round"/>
-        <path d="M1136 302l38 11-38 11z" fill="#8f2f28" stroke="#5d1c17" stroke-width=".9"/>
-      </g>
-
-      <rect width="1440" height="620" fill="url(#spot)"/>
-      <rect y="330" width="1440" height="290" fill="url(#fade)"/>
-      <rect width="1440" height="620" fill="url(#vignette)"/>
+      <!-- Dunst über dem Übergang und eine sehr milde Vignette -->
+      <rect x="-40" y="286" width="1520" height="80" fill="#fdf2e8" opacity=".22" filter="url(#softer)"/>
+      <rect width="1440" height="620" fill="url(#vignetteG)"/>
     </svg>
 
-    <!-- Grasnarbe und Filmkorn: eine 180px-Kachel aus fraktalem Rausch,
-         multipliziert über die Szene. Kostet ein paar hundert Byte. -->
+    <!-- Feines Korn über der Szene, damit die Verläufe nicht digital wirken -->
     <span class="hero-grain"></span>
   </div>
 
@@ -313,7 +258,7 @@
 
 <div class="tartan-band" aria-hidden="true"></div>
 
-<script src="js/config.js?v=28"></script>
-<script src="js/app.js?v=28"></script>
+<script src="js/config.js?v=29"></script>
+<script src="js/app.js?v=29"></script>
 </body>
 </html>

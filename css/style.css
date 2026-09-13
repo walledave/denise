@@ -213,21 +213,25 @@ img { max-width: 100%; }
   opacity: .18;
 }
 
-/* Heller Schleier links: darauf steht die dunkle Schrift ruhig und
-   lesbar, rechts bleibt das Foto offen. */
+/* Heller Schleier, mittig aufgezogen: der zentrierte Titel steht in
+   der Bildmitte, also liegt das Licht auch dort. */
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 2;
   background:
-    linear-gradient(102deg,
-      rgba(252, 246, 241, .93)  0%,
-      rgba(252, 246, 241, .86) 22%,
-      rgba(251, 243, 238, .56) 40%,
-      rgba(250, 241, 236, .18) 57%,
-      rgba(250, 241, 236, 0)   72%),
-    radial-gradient(80% 120% at 8% 40%, rgba(255, 252, 249, .5), transparent 70%);
+    /* enger Lichthof genau hinter dem Titelblock */
+    radial-gradient(42% 52% at 50% 44%,
+      rgba(253, 248, 243, .90)  0%,
+      rgba(253, 248, 243, .66) 46%,
+      rgba(253, 248, 243, .26) 76%,
+      rgba(253, 248, 243, 0)  100%),
+    /* nur ein Hauch über dem ganzen Bild, damit das Foto Foto bleibt */
+    linear-gradient(180deg,
+      rgba(252, 246, 241, .26) 0%,
+      rgba(252, 246, 241, .10) 42%,
+      rgba(252, 246, 241, .22) 100%);
   pointer-events: none;
 }
 
@@ -236,9 +240,9 @@ img { max-width: 100%; }
   content: "";
   position: absolute;
   left: 0; right: 0; bottom: 0;
-  height: 46%;
+  height: 44%;
   z-index: 2;
-  background: linear-gradient(180deg, rgba(250, 245, 240, 0), rgba(250, 245, 240, .58));
+  background: linear-gradient(180deg, rgba(250, 245, 240, 0), rgba(250, 245, 240, .55));
   pointer-events: none;
 }
 
@@ -249,87 +253,46 @@ img { max-width: 100%; }
   max-width: var(--wrap);
   margin: 0 auto;
   padding: clamp(34px, 5vw, 62px) var(--gutter);
+  text-align: center;
 }
 
-.hero-text { max-width: 34rem; }
-
-.hero-eyebrow {
-  position: relative;
-  display: inline-block;
-  margin: 0 0 14px;
-  padding-left: 42px;
-  font-size: .74rem;
-  font-weight: 600;
-  letter-spacing: .26em;
-  text-transform: uppercase;
-  color: var(--clay);
-}
-
-/* Goldstrich vor der Zeile – das kleine Detail, das teuer aussieht */
-.hero-eyebrow::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: .62em;
-  width: 30px;
-  height: 1.5px;
-  border-radius: 2px;
-  background: linear-gradient(90deg, var(--gold), rgba(185, 149, 79, 0));
+.hero-text {
+  max-width: 38rem;
+  margin-inline: auto;
 }
 
 .hero h1 {
-  font-size: clamp(2.5rem, 6.2vw, 4.1rem);
+  margin-top: 0;
+  font-size: clamp(2.5rem, 6.4vw, 4.2rem);
   letter-spacing: -.028em;
   color: #33291f;
   text-wrap: balance;
-  text-shadow: 0 1px 2px rgba(255, 251, 246, .9);
+  text-shadow:
+    0 1px 2px  rgba(255, 251, 246, .95),
+    0 0  22px rgba(255, 250, 244, .8);
+}
+
+/* Ein feiner Goldstrich als Ruhepunkt zwischen Titel und Text */
+.hero h1::after {
+  content: "";
+  display: block;
+  width: 74px;
+  height: 1.6px;
+  margin: 20px auto 0;
+  border-radius: 2px;
+  background: linear-gradient(90deg,
+    rgba(185, 149, 79, 0), var(--gold), rgba(185, 149, 79, 0));
 }
 
 .lede {
-  margin: 18px 0 0;
-  max-width: 30rem;
+  margin: 18px auto 0;
+  max-width: 32rem;
   font-size: clamp(.98rem, 1.4vw, 1.08rem);
   line-height: 1.66;
-  color: #4a3d34;
-  text-shadow: 0 1px 2px rgba(255, 251, 246, .85);
-}
-
-/* Handschriftlicher Gruß rechts unten im Bild */
-.hero-script {
-  position: absolute;
-  z-index: 3;
-  right: clamp(20px, 5vw, 66px);
-  bottom: clamp(52px, 7vw, 82px);
-  font-family: "Caveat", "Segoe Script", cursive;
-  font-size: clamp(1.55rem, 2.7vw, 2.2rem);
-  font-weight: 600;
-  line-height: 1.05;
-  text-align: center;
-  color: #4a382c;
+  color: #453930;
   text-shadow:
-    0 1px 0   rgba(255, 251, 246, .95),
-    0 2px 10px rgba(255, 249, 242, .95),
-    0 0  26px rgba(255, 249, 242, .85);
-}
-
-.hero-script::before {
-  content: "";
-  position: absolute;
-  inset: -28px -38px;
-  z-index: -1;
-  border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(255, 250, 244, .82), rgba(255, 250, 244, 0) 100%);
-}
-
-.hero-script::after {
-  content: "";
-  display: block;
-  width: 58%;
-  height: 1.6px;
-  margin: 8px auto 0;
-  border-radius: 2px;
-  background: linear-gradient(90deg, rgba(185, 149, 79, 0), var(--gold), rgba(185, 149, 79, 0));
-  opacity: .95;
+    0 1px 2px  rgba(255, 251, 246, .95),
+    0 0  16px rgba(255, 250, 244, .9);
 }
 
 .hero .tartan-band {
@@ -1227,11 +1190,15 @@ body > .tartan-band {
 
 @media (max-width: 860px) {
   .hero::before {
-    background: linear-gradient(178deg,
-      rgba(252, 246, 241, .96) 0%, rgba(252, 246, 241, .9) 46%,
-      rgba(251, 243, 238, .58) 70%, rgba(250, 241, 236, .12) 100%);
+    background:
+      radial-gradient(78% 46% at 50% 34%,
+        rgba(253, 248, 243, .93) 0%,
+        rgba(253, 248, 243, .72) 52%,
+        rgba(253, 248, 243, .18) 100%),
+      linear-gradient(180deg,
+        rgba(252, 246, 241, .3), rgba(252, 246, 241, .12) 50%,
+        rgba(252, 246, 241, .3));
   }
-  .hero-script { display: none; }
 }
 
 @media (max-width: 760px) {
@@ -1339,7 +1306,7 @@ body > .tartan-band {
 /* ---------- 21. Druck --------------------------------------- */
 
 @media print {
-  .hero-scene, .hero-photo, .hero-script, .tartan-band,
+  .hero-scene, .hero-photo, .tartan-band,
   .toolbar, .adminbar, .panel, .login { display: none !important; }
 
   body { background: #fff; }
